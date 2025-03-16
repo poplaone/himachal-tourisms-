@@ -170,39 +170,23 @@
   }
 }
 
-/* Tour package card styles */
+/* Tour card styles - more professional look */
 .tour-card {
-  @apply backdrop-blur-lg bg-black/30 border border-white/10 rounded-lg overflow-hidden shadow-xl;
+  @apply backdrop-blur-xl bg-black/30 border border-white/10 rounded-lg overflow-hidden shadow-xl;
 }
 
 .tour-card-header {
-  @apply bg-blue-600 text-white font-bold text-center py-2;
-}
-
-.tour-card-table {
-  @apply w-full border-collapse;
-}
-
-.tour-card-table th, .tour-card-table td {
-  @apply border border-gray-700/50 p-1 text-sm text-center;
+  @apply bg-sky-600/80 text-white font-bold text-center py-2;
 }
 
 .tour-card-inclusion {
-  @apply bg-green-600 text-white font-bold text-center py-1;
+  @apply bg-emerald-600/80 text-white font-bold text-center py-1;
 }
 
 .tour-card-exclusion {
-  @apply bg-red-600 text-white font-bold text-center py-1;
-}
-
-.tour-feature-active {
-  @apply text-blue-400;
-}
-
-.tour-feature-inactive {
-  @apply text-gray-500;
+  @apply bg-rose-600/80 text-white font-bold text-center py-1;
 }
 
 .book-now-btn {
-  @apply w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded transition-all duration-300;
+  @apply w-full bg-gradient-to-r from-sky-600 to-sky-700 hover:from-sky-700 hover:to-sky-800 text-white font-bold py-3 px-4 rounded transition-all duration-300;
 }
