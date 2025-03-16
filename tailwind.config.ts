@@ -53,6 +53,13 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				// Natural color combinations
+				nature: {
+					blue: '#0EA5E9',
+					green: '#10B981',
+					red: '#ea384c',
+					yellow: '#F97316',
+				}
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

@@ -2,8 +2,8 @@
 import { useEffect } from "react";
 import BackgroundSlider from "../components/BackgroundSlider";
 import HeroSection from "../components/HeroSection";
-import DiscoverSection from "../components/DiscoverSection";
 import ExperiencesSection from "../components/ExperiencesSection";
+import DiscoverSection from "../components/DiscoverSection";
 import TestimonialsSection from "../components/TestimonialsSection";
 import LeadFormSection from "../components/LeadFormSection";
 import Footer from "../components/Footer";
@@ -37,8 +37,8 @@ const Index = () => {
       
       <main className="relative">
         <HeroSection />
-        <DiscoverSection />
         <ExperiencesSection />
+        <DiscoverSection />
         <TestimonialsSection />
         <LeadFormSection />
       </main>

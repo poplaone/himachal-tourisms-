@@ -14,7 +14,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 263 90% 51%;
+    --primary: 210 100% 50%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -46,7 +46,7 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 263 90% 51%;
+    --primary: 210 100% 50%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 217.2 32.6% 17.5%;
@@ -168,4 +168,41 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Tour package card styles */
+.tour-card {
+  @apply backdrop-blur-lg bg-black/30 border border-white/10 rounded-lg overflow-hidden shadow-xl;
+}
+
+.tour-card-header {
+  @apply bg-blue-600 text-white font-bold text-center py-2;
+}
+
+.tour-card-table {
+  @apply w-full border-collapse;
+}
+
+.tour-card-table th, .tour-card-table td {
+  @apply border border-gray-700/50 p-1 text-sm text-center;
+}
+
+.tour-card-inclusion {
+  @apply bg-green-600 text-white font-bold text-center py-1;
+}
+
+.tour-card-exclusion {
+  @apply bg-red-600 text-white font-bold text-center py-1;
+}
+
+.tour-feature-active {
+  @apply text-blue-400;
+}
+
+.tour-feature-inactive {
+  @apply text-gray-500;
+}
+
+.book-now-btn {
+  @apply w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded transition-all duration-300;
 }
