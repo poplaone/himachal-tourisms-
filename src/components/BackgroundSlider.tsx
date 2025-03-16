@@ -24,7 +24,7 @@ const BackgroundSlider = ({ images, interval = 6000 }: BackgroundSliderProps) =>
       {images.map((image, index) => (
         <div
           key={index}
-          className="absolute inset-0 bg-cover bg-center bg-image-transition"
+          className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
           style={{
             backgroundImage: `url(${image})`,
             opacity: current === index ? 1 : 0,
