@@ -1,6 +1,7 @@
 
 import React from "react";
-import { Plane, Hotel, Map, UtensilsCrossed, Car, Calendar, ArrowRight } from "lucide-react";
+import { Plane, Hotel, Map, UtensilsCrossed, Car, Calendar, ArrowRight, Info } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import PackageFeatureIcon from "./PackageFeatureIcon";
 import PriceTable from "./PriceTable";
@@ -8,6 +9,7 @@ import InclusionExclusionList from "./InclusionExclusionList";
 import { TourPackageProps } from "./types";
 
 const TourPackageCard = ({
+  id,
   title,
   duration,
   batchPrice,
@@ -92,9 +94,12 @@ const TourPackageCard = ({
         </div>
       </div>
       
-      <div className="mt-auto p-3 pt-0">
-        <Button className="w-full bg-gradient-to-r from-sky-600 to-sky-700 hover:from-sky-700 hover:to-sky-800 text-white font-bold py-3 px-4 rounded transition-all duration-300" variant="default">
-          Send Enquiry <ArrowRight className="ml-1 w-4 h-4" />
+      <div className="mt-auto p-3 pt-0 grid grid-cols-2 gap-2">
+        <Link to={`/package/${id}`} className="flex items-center justify-center bg-white/20 hover:bg-white/30 text-white font-bold py-2 px-2 rounded transition-all duration-300">
+          <Info className="mr-1 w-4 h-4" /> Details
+        </Link>
+        <Button className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold py-3 px-4 rounded transition-all duration-300" variant="default">
+          Enquiry <ArrowRight className="ml-1 w-4 h-4" />
         </Button>
       </div>
     </div>

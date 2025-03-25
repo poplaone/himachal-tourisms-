@@ -1,21 +1,32 @@
 
 import * as React from "react";
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
 import TourPackageCard from "./tours/TourPackageCard";
 import { tourPackages } from "./tours/tourPackagesData";
 
 const ExperiencesSection = () => {
+  // Show only first 3 packages on the homepage
+  const featuredPackages = tourPackages.slice(0, 3);
+
   return (
     <section className="py-16 md:py-24 text-gray-200">
       <div className="container mx-auto px-4 lg:px-8">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-white">
-          Spiti Valley Tour Packages
-        </h2>
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+            Himachal Tour Packages
+          </h2>
+          <p className="text-lg text-gray-300 max-w-3xl mx-auto">
+            Discover the beauty of Himachal Pradesh with our handcrafted tour packages designed to give you the perfect experience.
+          </p>
+        </div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {tourPackages.map((pkg, index) => (
+          {featuredPackages.map((pkg, index) => (
             <TourPackageCard
-              key={index}
+              key={pkg.id || index}
+              id={pkg.id || `pkg-${index}`}
               title={pkg.title}
               duration={pkg.duration}
               batchPrice={pkg.batchPrice}
@@ -28,10 +39,17 @@ const ExperiencesSection = () => {
               inclusions={pkg.inclusions}
               exclusions={pkg.exclusions}
               image={pkg.image}
-              delay={pkg.delay}
-              hasFlights={false}
+              delay={0.3 + index * 0.1}
+              hasFlights={pkg.hasFlights}
+              type={pkg.type}
             />
           ))}
+        </div>
+        
+        <div className="text-center mt-12">
+          <Link to="/explore" className="inline-flex items-center bg-white/10 hover:bg-white/20 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 border border-white/20">
+            View All Packages <ArrowRight className="ml-2 h-4 w-4" />
+          </Link>
         </div>
       </div>
     </section>

@@ -1,5 +1,6 @@
 
 export interface TourPackageProps {
+  id: string;
   title: string;
   duration: string;
   batchPrice?: string | null;
@@ -20,4 +21,11 @@ export interface TourPackageProps {
   batchLabel?: string;
   delay: number;
   hasFlights?: boolean;
+  type?: 'fixed' | 'custom';
+  description?: string;
+  itinerary?: {
+    day: string;
+    title: string;
+    description: string;
+  }[];
 }

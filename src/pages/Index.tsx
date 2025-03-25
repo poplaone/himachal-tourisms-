@@ -1,6 +1,7 @@
 
 import { useEffect } from "react";
 import BackgroundSlider from "../components/BackgroundSlider";
+import Header from "../components/Header";
 import HeroSection from "../components/HeroSection";
 import ExperiencesSection from "../components/ExperiencesSection";
 import DiscoverSection from "../components/DiscoverSection";
@@ -9,9 +10,9 @@ import LeadFormSection from "../components/LeadFormSection";
 import Footer from "../components/Footer";
 
 const backgroundImages = [
-  "https://images.pexels.com/photos/10968181/pexels-photo-10968181.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  "https://images.pexels.com/photos/13580424/pexels-photo-13580424.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  "https://images.pexels.com/photos/13580426/pexels-photo-13580426.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  "https://images.unsplash.com/photo-1544815558-9f4329134004?q=80&w=2071&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1626621331169-5f34be280ed9?q=80&w=2070&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1501555088652-021faa106b9b?q=80&w=2073&auto=format&fit=crop",
 ];
 
 const Index = () => {
@@ -34,8 +35,9 @@ const Index = () => {
   return (
     <div className="min-h-screen font-sans overflow-x-hidden">
       <BackgroundSlider images={backgroundImages} />
+      <Header />
       
-      <main className="relative">
+      <main className="relative pt-16">
         <HeroSection />
         <ExperiencesSection />
         <DiscoverSection />

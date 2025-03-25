@@ -1,6 +1,7 @@
 
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface Destination {
   id: string;
@@ -15,17 +16,17 @@ const HeroSection = () => {
     {
       id: "explore",
       title: "Explore",
-      description: "Embark on an extraordinary adventure in the heart of the Himalayas.",
+      description: "Embark on an extraordinary adventure in the heart of Himachal Pradesh.",
     },
     {
       id: "discover",
       title: "Discover",
-      description: "Uncover ancient monasteries and breathtaking landscapes in Spiti Valley.",
+      description: "Uncover ancient monasteries and breathtaking landscapes across Himachal.",
     },
     {
       id: "experience",
       title: "Experience",
-      description: "Immerse yourself in the unique culture and traditions of Spitian life.",
+      description: "Immerse yourself in the unique culture and traditions of Himachali life.",
     },
   ];
 
@@ -47,7 +48,7 @@ const HeroSection = () => {
                 onClick={() => setActiveTab(tab.id)}
                 className={`btn px-4 py-2 rounded-full ${
                   activeTab === tab.id
-                    ? "bg-gradient-to-r from-purple-500 to-indigo-600 text-white"
+                    ? "bg-gradient-to-r from-amber-500 to-amber-600 text-white"
                     : "bg-white/20 hover:bg-white/30"
                 }`}
               >
@@ -70,22 +71,34 @@ const HeroSection = () => {
                   className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4 tracking-tight"
                   style={{ textShadow: "0 2px 4px rgba(0,0,0,0.5)" }}
                 >
-                  {activeTab === "explore" ? "Unlock Spiti" : activeTab === "discover" ? "Sacred Spiti" : "Live Spiti"}
+                  {activeTab === "explore" ? "Explore Himachal" : activeTab === "discover" ? "Discover Himachal" : "Experience Himachal"}
                 </h1>
                 <p className="text-xl md:text-2xl opacity-90">{tab.description}</p>
               </div>
             ))}
           </div>
 
-          <button
-            className="bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white font-semibold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50"
-            onClick={scrollToForm}
-            style={{ 
-              transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)' 
-            }}
-          >
-            Plan Your Adventure
-          </button>
+          <div className="grid grid-cols-2 gap-4">
+            <Link
+              to="/explore"
+              className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-semibold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-opacity-50"
+              style={{ 
+                transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)' 
+              }}
+            >
+              Explore Packages
+            </Link>
+            
+            <button
+              className="bg-white/20 hover:bg-white/30 text-white font-semibold py-3 px-8 rounded-full border border-white/30 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+              onClick={scrollToForm}
+              style={{ 
+                transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)' 
+              }}
+            >
+              Plan Your Trip
+            </button>
+          </div>
         </div>
       </div>
       
