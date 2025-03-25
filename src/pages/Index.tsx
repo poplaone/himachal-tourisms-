@@ -1,5 +1,6 @@
 
 import { useEffect } from "react";
+import { Helmet } from "react-helmet";
 import BackgroundSlider from "../components/BackgroundSlider";
 import Header from "../components/Header";
 import HeroSection from "../components/HeroSection";
@@ -10,9 +11,9 @@ import LeadFormSection from "../components/LeadFormSection";
 import Footer from "../components/Footer";
 
 const backgroundImages = [
-  "https://images.unsplash.com/photo-1544815558-9f4329134004?q=80&w=2071&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1626621331169-5f34be280ed9?q=80&w=2070&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1501555088652-021faa106b9b?q=80&w=2073&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1532452413971-c56d62db18ce?q=80&w=2070&auto=format&fit=crop", // Himachal mountains with snow
+  "https://images.unsplash.com/photo-1618767451283-c22a4aff9921?q=80&w=2070&auto=format&fit=crop", // Temple in mountains
+  "https://images.unsplash.com/photo-1559592892-b447693e4c1e?q=80&w=2070&auto=format&fit=crop", // Valley in Himachal
 ];
 
 const Index = () => {
@@ -34,6 +35,16 @@ const Index = () => {
 
   return (
     <div className="min-h-screen font-sans overflow-x-hidden">
+      <Helmet>
+        <title>Himachal Tourism - Experience the Beauty of Devbhoomi</title>
+        <meta name="description" content="Discover the majestic beauty of Himachal Pradesh with our carefully curated tour packages. From snow-capped mountains to ancient temples, explore the land of gods with professional guides and comfortable accommodations." />
+        <meta name="keywords" content="Himachal tourism, Himachal tour packages, Manali tours, Shimla tours, Spiti Valley, Himachal adventure, mountain tours, Himachal Pradesh vacation" />
+        <meta property="og:title" content="Himachal Tourism - Experience the Beauty of Devbhoomi" />
+        <meta property="og:description" content="Discover the majestic beauty of Himachal Pradesh with our carefully curated tour packages." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://himachaltourism.com" />
+        <meta property="og:image" content="https://images.unsplash.com/photo-1532452413971-c56d62db18ce?q=80&w=2070&auto=format&fit=crop" />
+      </Helmet>
       <BackgroundSlider images={backgroundImages} />
       <Header />
       

@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import BackgroundSlider from "../components/BackgroundSlider";
@@ -7,9 +8,9 @@ import TourPackageCard from "../components/tours/TourPackageCard";
 import { tourPackages } from "../components/tours/tourPackagesData";
 
 const backgroundImages = [
-  "https://images.unsplash.com/photo-1544815558-9f4329134004?q=80&w=2071&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1626621331169-5f34be280ed9?q=80&w=2070&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1501555088652-021faa106b9b?q=80&w=2073&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1532452413971-c56d62db18ce?q=80&w=2070&auto=format&fit=crop", // Himachal mountains with snow
+  "https://images.unsplash.com/photo-1618767451283-c22a4aff9921?q=80&w=2070&auto=format&fit=crop", // Temple in mountains
+  "https://images.unsplash.com/photo-1559592892-b447693e4c1e?q=80&w=2070&auto=format&fit=crop", // Valley in Himachal
 ];
 
 const ExplorePage = () => {
@@ -27,6 +28,16 @@ const ExplorePage = () => {
 
   return (
     <div className="min-h-screen font-sans overflow-x-hidden">
+      <Helmet>
+        <title>Explore Tour Packages - Himachal Tourism</title>
+        <meta name="description" content="Browse our handpicked selection of Himachal tour packages - from fixed group departures to fully customized private tours. Find the perfect Himachal adventure for any budget and preference." />
+        <meta name="keywords" content="Himachal tour packages, Manali tours, Shimla packages, Spiti Valley treks, custom Himachal tours, fixed departure tours" />
+        <meta property="og:title" content="Explore Tour Packages - Himachal Tourism" />
+        <meta property="og:description" content="Browse our handpicked selection of Himachal tour packages." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://himachaltourism.com/explore" />
+        <meta property="og:image" content="https://images.unsplash.com/photo-1532452413971-c56d62db18ce?q=80&w=2070&auto=format&fit=crop" />
+      </Helmet>
       <BackgroundSlider images={backgroundImages} />
       <Header />
       
@@ -50,7 +61,7 @@ const ExplorePage = () => {
                 onClick={() => setActiveTab('fixed')}
                 className={`px-6 py-3 rounded-full text-white font-medium transition-all ${
                   activeTab === 'fixed' 
-                    ? 'bg-gradient-to-r from-amber-500 to-amber-600 shadow-md' 
+                    ? 'bg-gradient-to-r from-blue-500 to-blue-600 shadow-md' 
                     : 'hover:bg-white/10'
                 }`}
               >
@@ -60,7 +71,7 @@ const ExplorePage = () => {
                 onClick={() => setActiveTab('custom')}
                 className={`px-6 py-3 rounded-full text-white font-medium transition-all ${
                   activeTab === 'custom' 
-                    ? 'bg-gradient-to-r from-amber-500 to-amber-600 shadow-md' 
+                    ? 'bg-gradient-to-r from-blue-500 to-blue-600 shadow-md' 
                     : 'hover:bg-white/10'
                 }`}
               >
