@@ -1,6 +1,5 @@
 
 import { useState, useEffect } from "react";
-import { Tab } from "lucide-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import BackgroundSlider from "../components/BackgroundSlider";
