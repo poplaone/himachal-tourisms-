@@ -1,6 +1,6 @@
 
 import { useEffect } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import BackgroundSlider from "../components/BackgroundSlider";
 import Header from "../components/Header";
 import HeroSection from "../components/HeroSection";
