@@ -12,6 +12,12 @@ const BackgroundSlider = ({ images, interval = 6000 }: BackgroundSliderProps) =>
   useEffect(() => {
     if (images.length <= 1) return;
     
+    // Force image preloading
+    images.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+    
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % images.length);
     }, interval);
@@ -28,6 +34,8 @@ const BackgroundSlider = ({ images, interval = 6000 }: BackgroundSliderProps) =>
           style={{
             backgroundImage: `url(${image})`,
             opacity: current === index ? 1 : 0,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
           }}
         />
       ))}
