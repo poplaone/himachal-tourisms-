@@ -97,13 +97,13 @@ section {
 
 .glass-effect {
   backdrop-filter: blur(12px);
-  background-color: rgba(17, 24, 39, 0.4);
+  background-color: rgba(17, 24, 39, 0.3); /* Lightened from 0.4 to 0.3 */
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
 .neo-blur {
-  @apply backdrop-blur-2xl bg-black/40 border border-white/10;
+  @apply backdrop-blur-2xl bg-black/25 border border-white/10; /* Lightened from 0.4 to 0.25 */
 }
 
 .header-content {
@@ -193,7 +193,7 @@ section {
 
 /* Tour card styles - more professional look */
 .tour-card {
-  @apply backdrop-blur-xl bg-black/30 border border-white/10 rounded-lg overflow-hidden shadow-xl;
+  @apply backdrop-blur-xl bg-black/20 border border-white/10 rounded-lg overflow-hidden shadow-xl; /* Lightened from 0.3 to 0.2 */
 }
 
 .tour-card-header {
@@ -211,4 +211,3 @@ section {
 .book-now-btn {
   @apply w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-3 px-4 rounded transition-all duration-300;
 }
-

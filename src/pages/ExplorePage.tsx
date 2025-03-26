@@ -7,10 +7,11 @@ import BackgroundSlider from "../components/BackgroundSlider";
 import TourPackageCard from "../components/tours/TourPackageCard";
 import { tourPackages } from "../components/tours/tourPackagesData";
 
+// Use the same background images as the home page
 const backgroundImages = [
-  "https://images.unsplash.com/photo-1532452413971-c56d62db18ce?q=80&w=2070&auto=format&fit=crop", // Himachal mountains with snow
-  "https://images.unsplash.com/photo-1618767451283-c22a4aff9921?q=80&w=2070&auto=format&fit=crop", // Temple in mountains
-  "https://images.unsplash.com/photo-1559592892-b447693e4c1e?q=80&w=2070&auto=format&fit=crop", // Valley in Himachal
+  "https://images.unsplash.com/photo-1472396961693-142e6e269027?q=80&w=2070&auto=format&fit=crop", // Deer in Himachal forest
+  "https://images.unsplash.com/photo-1506604900144-7360175909e2?q=80&w=2070&auto=format&fit=crop", // Himachal mountains
+  "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?q=80&w=2070&auto=format&fit=crop", // River between mountains
 ];
 
 const ExplorePage = () => {
@@ -59,7 +60,7 @@ const ExplorePage = () => {
           </div>
 
           <div className="flex justify-center mb-8">
-            <div className="backdrop-blur-xl bg-white/10 rounded-full p-1 shadow-lg border border-white/20 inline-flex">
+            <div className="backdrop-blur-xl bg-white/15 rounded-full p-1 shadow-lg border border-white/20 inline-flex">
               <button
                 onClick={() => setActiveTab('fixed')}
                 className={`px-6 py-3 rounded-full text-white font-medium transition-all ${

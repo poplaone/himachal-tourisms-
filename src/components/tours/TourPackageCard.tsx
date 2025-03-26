@@ -26,17 +26,17 @@ const TourPackageCard = ({
   const [nightsCount, daysCount] = duration.split(/Nights|Days/).filter(Boolean).map(s => s.trim());
   
   return (
-    <div className="backdrop-blur-xl bg-black/30 border border-white/10 rounded-lg overflow-hidden shadow-lg h-full" 
+    <div className="backdrop-blur-xl bg-black/25 border border-white/10 rounded-lg overflow-hidden shadow-lg h-full" 
       style={{
         opacity: 0,
         animation: `fade-in 0.7s forwards ease-out ${delay}s`
       }}
     >
-      <div className="h-64 overflow-hidden bg-gray-800/40 relative">
+      <div className="h-72 overflow-hidden bg-gray-800/30 relative">
         {image && (
           <img src={image} alt={title} className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
         )}
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/80 to-transparent"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/70 to-transparent"></div>
         <div className="absolute bottom-4 left-0 w-full px-3">
           <h3 className="text-lg md:text-xl font-bold text-white leading-tight">{title}</h3>
         </div>
@@ -60,7 +60,7 @@ const TourPackageCard = ({
         {/* Batch Pricing */}
         {batchPrice && (
           <div className="mt-3">
-            <h4 className="text-center bg-white/20 backdrop-blur-sm text-white text-sm font-semibold py-1">{batchLabel}</h4>
+            <h4 className="text-center bg-white/15 backdrop-blur-sm text-white text-sm font-semibold py-1">{batchLabel}</h4>
             <div className="grid grid-cols-2 gap-0">
               <div className="text-center py-2 px-1 border-r border-white/10">
                 <div className="text-lg font-bold text-green-300">{batchPrice}</div>

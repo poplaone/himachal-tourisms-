@@ -17,19 +17,6 @@ const backgroundImages = [
 ];
 
 const Index = () => {
-  const [scrollPosition, setScrollPosition] = useState(0);
-  
-  // Track scroll position
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollPosition(window.scrollY);
-    };
-    
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // Page load animations
   useEffect(() => {
     // Fade in the body content
     document.body.style.opacity = "0";
@@ -45,10 +32,6 @@ const Index = () => {
     };
   }, []);
 
-  // Calculate logo opacity based on scroll position
-  const logoOpacity = Math.max(0, Math.min(1, 1 - (scrollPosition / 150)));
-  const logoTransform = `translateY(${Math.min(20, scrollPosition / 5)}px)`;
-
   return (
     <div className="min-h-screen font-sans overflow-x-hidden">
       <Helmet>
@@ -63,19 +46,6 @@ const Index = () => {
       </Helmet>
       <BackgroundSlider images={backgroundImages} />
       <Header isHomePage={true} />
-      
-      {/* Floating logo for mobile - only on home page */}
-      <div 
-        className="fixed top-[20vh] left-1/2 transform -translate-x-1/2 z-40 text-4xl font-bold text-white text-center pointer-events-none md:hidden"
-        style={{
-          opacity: logoOpacity,
-          transform: logoTransform,
-          transition: 'opacity 0.3s ease-out, transform 0.3s ease-out',
-          textShadow: '0 2px 10px rgba(0,0,0,0.5)'
-        }}
-      >
-        Himachal<br/>Tourism
-      </div>
       
       <main className="relative pt-16">
         <HeroSection />
