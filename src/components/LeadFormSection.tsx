@@ -33,7 +33,7 @@ const LeadFormSection = () => {
   };
 
   return (
-    <section id="lead-form" className="py-16 md:py-24 text-gray-200">
+    <section id="lead-form" className="py-10 md:py-16 text-gray-200">
       <div className="container mx-auto px-6 lg:px-8">
         <div 
           className="max-w-2xl mx-auto backdrop-blur-xl bg-black/30 rounded-2xl border border-white/10 p-8 md:p-12 shadow-2xl"

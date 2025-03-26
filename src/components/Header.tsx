@@ -1,9 +1,12 @@
+
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
+
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -11,7 +14,9 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  return <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled || mobileMenuOpen ? "bg-black/70 backdrop-blur-lg shadow-lg" : "bg-transparent"}`}>
+
+  return (
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled || mobileMenuOpen ? "bg-black/70 backdrop-blur-lg shadow-lg" : "bg-transparent"}`}>
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           <Link to="/" className="text-white text-2xl font-bold tracking-tight">
@@ -25,6 +30,12 @@ const Header = () => {
             </Link>
             <Link to="/explore" className="hover:text-amber-300 transition-colors">
               Explore
+            </Link>
+            <Link to="/about" className="hover:text-amber-300 transition-colors">
+              About
+            </Link>
+            <Link to="/blog" className="hover:text-amber-300 transition-colors">
+              Blog
             </Link>
             <div className="relative group">
               <button className="flex items-center hover:text-amber-300 transition-colors">
@@ -42,8 +53,11 @@ const Header = () => {
                 </Link>
               </div>
             </div>
-            <Link to="#lead-form" className="hover:text-amber-300 transition-colors">
+            <Link to="/contact" className="hover:text-amber-300 transition-colors">
               Contact
+            </Link>
+            <Link to="/faq" className="hover:text-amber-300 transition-colors">
+              FAQ
             </Link>
           </nav>
 
@@ -54,12 +68,19 @@ const Header = () => {
         </div>
 
         {/* Mobile Navigation */}
-        {mobileMenuOpen && <nav className="md:hidden py-4 space-y-4 text-white backdrop-blur-md mt-2 p-4 bg-transparent rounded-md">
+        {mobileMenuOpen && (
+          <nav className="md:hidden py-4 space-y-4 text-white bg-black/70 backdrop-blur-lg mt-2 p-4 rounded-md">
             <Link to="/" className="block py-2 hover:text-amber-300 transition-colors" onClick={() => setMobileMenuOpen(false)}>
               Home
             </Link>
             <Link to="/explore" className="block py-2 hover:text-amber-300 transition-colors" onClick={() => setMobileMenuOpen(false)}>
               Explore
+            </Link>
+            <Link to="/about" className="block py-2 hover:text-amber-300 transition-colors" onClick={() => setMobileMenuOpen(false)}>
+              About
+            </Link>
+            <Link to="/blog" className="block py-2 hover:text-amber-300 transition-colors" onClick={() => setMobileMenuOpen(false)}>
+              Blog
             </Link>
             <div className="py-2">
               <div className="flex items-center justify-between">
@@ -78,11 +99,17 @@ const Header = () => {
                 </Link>
               </div>
             </div>
-            <Link to="#lead-form" className="block py-2 hover:text-amber-300 transition-colors" onClick={() => setMobileMenuOpen(false)}>
+            <Link to="/contact" className="block py-2 hover:text-amber-300 transition-colors" onClick={() => setMobileMenuOpen(false)}>
               Contact
             </Link>
-          </nav>}
+            <Link to="/faq" className="block py-2 hover:text-amber-300 transition-colors" onClick={() => setMobileMenuOpen(false)}>
+              FAQ
+            </Link>
+          </nav>
+        )}
       </div>
-    </header>;
+    </header>
+  );
 };
+
 export default Header;

@@ -36,6 +36,7 @@ const BackgroundSlider = ({ images, interval = 6000 }: BackgroundSliderProps) =>
             opacity: current === index ? 1 : 0,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
+            backgroundAttachment: 'fixed' // This fixes the background
           }}
         />
       ))}

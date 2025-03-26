@@ -46,7 +46,7 @@ const TestimonialsSection = () => {
   }, [currentTestimonial, isAnimating]);
 
   return (
-    <section className="py-16 md:py-24 text-gray-200">
+    <section className="py-10 md:py-16 text-gray-200">
       <div className="container mx-auto px-6 lg:px-8">
         <div className="backdrop-blur-xl bg-black/30 rounded-2xl p-8 md:p-12 shadow-lg border border-white/10">
           <div 

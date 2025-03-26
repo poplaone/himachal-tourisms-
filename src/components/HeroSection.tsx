@@ -27,7 +27,7 @@ const HeroSection = () => {
       </Helmet>
       <div className="relative min-h-screen flex items-center justify-center text-white overflow-hidden">
         <div 
-          className="relative z-10 text-center p-4 sm:p-6 w-full max-w-3xl mx-auto md:mt-0 mt-[-80px]"
+          className="relative z-10 text-center p-4 sm:p-6 w-full max-w-3xl mx-auto md:mt-0 mt-[-20px]"
           style={{ opacity: 0, animation: 'fade-in 0.8s forwards ease-out' }}
         >
           <div className="backdrop-blur-xl bg-white/10 rounded-2xl p-6 md:p-8 shadow-lg border border-white/20">
