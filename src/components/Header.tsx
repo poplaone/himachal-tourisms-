@@ -19,7 +19,7 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
+        isScrolled || mobileMenuOpen
           ? "bg-black/70 backdrop-blur-lg shadow-lg" 
           : "bg-transparent"
       }`}
@@ -70,7 +70,7 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <nav className="md:hidden py-4 space-y-4 text-white">
+          <nav className="md:hidden py-4 space-y-4 text-white bg-black/70 backdrop-blur-md rounded-lg mt-2 p-4">
             <Link
               to="/"
               className="block py-2 hover:text-amber-300 transition-colors"

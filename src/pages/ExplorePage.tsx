@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import BackgroundSlider from "../components/BackgroundSlider";
@@ -24,6 +24,9 @@ const ExplorePage = () => {
     } else {
       setFilteredPackages(tourPackages.filter(pkg => pkg.type === 'custom'));
     }
+    
+    // Scroll to top when the page loads
+    window.scrollTo(0, 0);
   }, [activeTab]);
 
   return (

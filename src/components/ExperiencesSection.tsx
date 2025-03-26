@@ -10,6 +10,11 @@ const ExperiencesSection = () => {
   // Show only first 3 packages on the homepage
   const featuredPackages = tourPackages.slice(0, 3);
 
+  // Function to scroll to top when clicking "View All Packages"
+  const handleViewAllClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <section className="py-16 md:py-24 text-gray-200">
       <div className="container mx-auto px-4 lg:px-8">
@@ -47,7 +52,11 @@ const ExperiencesSection = () => {
         </div>
         
         <div className="text-center mt-12">
-          <Link to="/explore" className="inline-flex items-center bg-white/10 hover:bg-white/20 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 border border-white/20">
+          <Link 
+            to="/explore" 
+            className="inline-flex items-center bg-white/10 hover:bg-white/20 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 border border-white/20"
+            onClick={handleViewAllClick}
+          >
             View All Packages <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
         </div>
