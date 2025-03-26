@@ -38,6 +38,8 @@ const PackageDetail = () => {
     }
     
     setLoading(false);
+    // Scroll to top when package loads
+    window.scrollTo(0, 0);
   }, [id]);
 
   if (loading) {
@@ -55,7 +57,7 @@ const PackageDetail = () => {
         <div className="container mx-auto px-4 pt-24 pb-16 text-center">
           <h1 className="text-3xl font-bold mb-4">Package Not Found</h1>
           <p className="mb-8">The tour package you're looking for doesn't exist or has been removed.</p>
-          <Link to="/explore" className="bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-6 rounded-lg transition-colors">
+          <Link to="/explore" className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-2 px-6 rounded-lg transition-colors">
             Back to Packages
           </Link>
         </div>
@@ -89,25 +91,25 @@ const PackageDetail = () => {
         </div>
         
         <div className="relative h-full container mx-auto px-4 flex flex-col justify-end pb-8">
-          <Link to="/explore" className="inline-flex items-center text-amber-300 hover:text-amber-400 transition-colors mb-4">
+          <Link to="/explore" className="inline-flex items-center text-green-300 hover:text-green-400 transition-colors mb-4">
             <ArrowLeft className="w-4 h-4 mr-1" /> Back to Packages
           </Link>
           <h1 className="text-3xl md:text-5xl font-bold mb-2">{tourPackage.title}</h1>
           <div className="flex flex-wrap items-center gap-4 mt-2">
             <div className="flex items-center">
-              <Calendar className="w-5 h-5 mr-2 text-amber-300" />
+              <Calendar className="w-5 h-5 mr-2 text-green-300" />
               <span>{tourPackage.duration}</span>
             </div>
             <div className="flex items-center">
-              <Clock className="w-5 h-5 mr-2 text-amber-300" />
+              <Clock className="w-5 h-5 mr-2 text-green-300" />
               <span>Best Time: April-June, Sept-Oct</span>
             </div>
             <div className="flex items-center">
-              <MapPin className="w-5 h-5 mr-2 text-amber-300" />
+              <MapPin className="w-5 h-5 mr-2 text-green-300" />
               <span>Himachal Pradesh</span>
             </div>
             <div className="flex items-center">
-              <Users className="w-5 h-5 mr-2 text-amber-300" />
+              <Users className="w-5 h-5 mr-2 text-green-300" />
               <span>Min 2 People</span>
             </div>
           </div>
@@ -119,7 +121,7 @@ const PackageDetail = () => {
           <div className="lg:col-span-2">
             {/* Overview */}
             <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-lg p-6 mb-8">
-              <h2 className="text-2xl font-bold mb-4 text-amber-300">Tour Overview</h2>
+              <h2 className="text-2xl font-bold mb-4 text-green-300">Tour Overview</h2>
               <p className="text-gray-300 mb-6">
                 {tourPackage.description || 
                 `Experience the magic of ${tourPackage.title} with our perfectly crafted itinerary. 
@@ -139,12 +141,12 @@ const PackageDetail = () => {
             
             {/* Itinerary */}
             <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-lg p-6 mb-8">
-              <h2 className="text-2xl font-bold mb-6 text-amber-300">Tour Itinerary</h2>
+              <h2 className="text-2xl font-bold mb-6 text-green-300">Tour Itinerary</h2>
               
               <div className="space-y-6">
                 {itinerary.map((day, index) => (
-                  <div key={index} className="relative pl-8 pb-6 border-l-2 border-amber-500 last:border-l-0">
-                    <div className="absolute top-0 left-0 w-4 h-4 -translate-x-[9px] rounded-full bg-amber-500"></div>
+                  <div key={index} className="relative pl-8 pb-6 border-l-2 border-green-500 last:border-l-0">
+                    <div className="absolute top-0 left-0 w-4 h-4 -translate-x-[9px] rounded-full bg-green-500"></div>
                     <h3 className="font-bold text-xl text-white mb-1">{day.day}: {day.title}</h3>
                     <p className="text-gray-300">{day.description}</p>
                   </div>
@@ -192,16 +194,16 @@ const PackageDetail = () => {
               {/* Fixed Departure Price */}
               {tourPackage.batchPrice && (
                 <div className="mb-6">
-                  <h3 className="bg-amber-500/20 text-center py-2 text-amber-300 font-semibold rounded-t-lg">
+                  <h3 className="bg-green-500/20 text-center py-2 text-green-300 font-semibold rounded-t-lg">
                     {tourPackage.batchLabel || "Fixed Departure Batches"}
                   </h3>
                   <div className="grid grid-cols-2 border-x border-b border-white/10 rounded-b-lg overflow-hidden">
                     <div className="text-center p-3 border-r border-white/10 bg-white/5">
-                      <div className="text-xl font-bold text-amber-300">{tourPackage.batchPrice}</div>
+                      <div className="text-xl font-bold text-green-300">{tourPackage.batchPrice}</div>
                       <div className="text-xs text-gray-400">{tourPackage.batchShare}</div>
                     </div>
                     <div className="text-center p-3 bg-white/5">
-                      <div className="text-xl font-bold text-amber-300">{tourPackage.batchPrice2 || "-"}</div>
+                      <div className="text-xl font-bold text-green-300">{tourPackage.batchPrice2 || "-"}</div>
                       <div className="text-xs text-gray-400">{tourPackage.batchShare2 || ""}</div>
                     </div>
                   </div>
@@ -240,7 +242,7 @@ const PackageDetail = () => {
               )}
               
               <div className="space-y-3">
-                <Button className="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 font-bold text-white py-3">
+                <Button className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 font-bold text-white py-3">
                   Send Enquiry
                 </Button>
                 <Button className="w-full bg-white/10 hover:bg-white/20 font-semibold text-white py-3">
@@ -250,7 +252,7 @@ const PackageDetail = () => {
               
               <div className="mt-6 text-center text-sm text-gray-400">
                 Not what you're looking for?<br/>
-                <Link to="/explore" className="text-amber-300 hover:text-amber-400 transition-colors">
+                <Link to="/explore" className="text-green-300 hover:text-green-400 transition-colors">
                   View All Packages <ChevronRight className="inline-block w-4 h-4" />
                 </Link>
               </div>

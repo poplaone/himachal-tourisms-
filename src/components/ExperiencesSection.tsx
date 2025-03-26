@@ -54,7 +54,7 @@ const ExperiencesSection = () => {
         <div className="text-center mt-12">
           <Link 
             to="/explore" 
-            className="inline-flex items-center bg-white/10 hover:bg-white/20 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 border border-white/20"
+            className="inline-flex items-center bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 border border-green-700/20"
             onClick={handleViewAllClick}
           >
             View All Packages <ArrowRight className="ml-2 h-4 w-4" />

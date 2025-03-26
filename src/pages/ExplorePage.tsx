@@ -64,7 +64,7 @@ const ExplorePage = () => {
                 onClick={() => setActiveTab('fixed')}
                 className={`px-6 py-3 rounded-full text-white font-medium transition-all ${
                   activeTab === 'fixed' 
-                    ? 'bg-gradient-to-r from-blue-500 to-blue-600 shadow-md' 
+                    ? 'bg-gradient-to-r from-green-500 to-green-600 shadow-md' 
                     : 'hover:bg-white/10'
                 }`}
               >
@@ -74,7 +74,7 @@ const ExplorePage = () => {
                 onClick={() => setActiveTab('custom')}
                 className={`px-6 py-3 rounded-full text-white font-medium transition-all ${
                   activeTab === 'custom' 
-                    ? 'bg-gradient-to-r from-blue-500 to-blue-600 shadow-md' 
+                    ? 'bg-gradient-to-r from-green-500 to-green-600 shadow-md' 
                     : 'hover:bg-white/10'
                 }`}
               >

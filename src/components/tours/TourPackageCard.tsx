@@ -4,8 +4,6 @@ import { Plane, Hotel, Map, UtensilsCrossed, Car, Calendar, ArrowRight, Info } f
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import PackageFeatureIcon from "./PackageFeatureIcon";
-import PriceTable from "./PriceTable";
-import InclusionExclusionList from "./InclusionExclusionList";
 import { TourPackageProps } from "./types";
 
 const TourPackageCard = ({
@@ -34,7 +32,7 @@ const TourPackageCard = ({
         animation: `fade-in 0.7s forwards ease-out ${delay}s`
       }}
     >
-      <div className="h-48 overflow-hidden bg-gray-800/40 relative">
+      <div className="h-64 overflow-hidden bg-gray-800/40 relative">
         {image && (
           <img src={image} alt={title} className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
         )}
@@ -46,8 +44,8 @@ const TourPackageCard = ({
       
       <div className="p-3">
         <div className="flex items-center mb-3 bg-white/5 px-2 py-1 rounded-md">
-          <Calendar className="w-4 h-4 mr-2 text-amber-300" />
-          <span className="text-sm text-white">Duration: <span className="text-amber-300 font-bold">{nightsCount}</span> Nights <span className="text-amber-300 font-bold">{daysCount}</span> Days</span>
+          <Calendar className="w-4 h-4 mr-2 text-green-300" />
+          <span className="text-sm text-white">Duration: <span className="text-green-300 font-bold">{nightsCount}</span> Nights <span className="text-green-300 font-bold">{daysCount}</span> Days</span>
         </div>
         
         {/* Features Icons */}
@@ -65,12 +63,12 @@ const TourPackageCard = ({
             <h4 className="text-center bg-white/20 backdrop-blur-sm text-white text-sm font-semibold py-1">{batchLabel}</h4>
             <div className="grid grid-cols-2 gap-0">
               <div className="text-center py-2 px-1 border-r border-white/10">
-                <div className="text-lg font-bold text-amber-300">{batchPrice}</div>
+                <div className="text-lg font-bold text-green-300">{batchPrice}</div>
                 {batchShare && <div className="text-xs text-gray-300">{batchShare}</div>}
               </div>
               {batchPrice2 ? (
                 <div className="text-center py-2 px-1">
-                  <div className="text-lg font-bold text-amber-300">{batchPrice2}</div>
+                  <div className="text-lg font-bold text-green-300">{batchPrice2}</div>
                   {batchShare2 && <div className="text-xs text-gray-300">{batchShare2}</div>}
                 </div>
               ) : (
@@ -81,24 +79,13 @@ const TourPackageCard = ({
             </div>
           </div>
         )}
-        
-        {/* Private Tour Pricing */}
-        {privateTourPrices && (
-          <PriceTable title={privateTourLabel} privateTourPrices={privateTourPrices} />
-        )}
-        
-        {/* Inclusions & Exclusions */}
-        <div className="grid grid-cols-2 gap-0 border border-white/10 mt-3">
-          <InclusionExclusionList items={inclusions} type="inclusion" />
-          <InclusionExclusionList items={exclusions} type="exclusion" />
-        </div>
       </div>
       
       <div className="mt-auto p-3 pt-0 grid grid-cols-2 gap-2">
         <Link to={`/package/${id}`} className="flex items-center justify-center bg-white/20 hover:bg-white/30 text-white font-bold py-2 px-2 rounded transition-all duration-300">
           <Info className="mr-1 w-4 h-4" /> Details
         </Link>
-        <Button className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold py-3 px-4 rounded transition-all duration-300" variant="default">
+        <Button className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-3 px-4 rounded transition-all duration-300" variant="default">
           Enquiry <ArrowRight className="ml-1 w-4 h-4" />
         </Button>
       </div>

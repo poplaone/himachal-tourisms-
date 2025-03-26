@@ -82,6 +82,11 @@
   }
 }
 
+/* Reduce spacing between sections */
+section {
+  @apply py-6 md:py-10;
+}
+
 .animation-delay-2000 {
   animation-delay: 2s;
 }
@@ -170,13 +175,29 @@
   }
 }
 
+/* Fix background image on mobile */
+.bg-fixed {
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Force background to stay fixed on mobile */
+@media (max-width: 768px) {
+  .bg-fixed {
+    background-attachment: scroll; /* This actually works better on mobile */
+    transform: translateZ(0); /* Fix for iOS */
+    will-change: transform; /* Performance optimization */
+  }
+}
+
 /* Tour card styles - more professional look */
 .tour-card {
   @apply backdrop-blur-xl bg-black/30 border border-white/10 rounded-lg overflow-hidden shadow-xl;
 }
 
 .tour-card-header {
-  @apply bg-sky-600/80 text-white font-bold text-center py-2;
+  @apply bg-green-600/80 text-white font-bold text-center py-2;
 }
 
 .tour-card-inclusion {
@@ -188,5 +209,6 @@
 }
 
 .book-now-btn {
-  @apply w-full bg-gradient-to-r from-sky-600 to-sky-700 hover:from-sky-700 hover:to-sky-800 text-white font-bold py-3 px-4 rounded transition-all duration-300;
+  @apply w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-3 px-4 rounded transition-all duration-300;
 }
+

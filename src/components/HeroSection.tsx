@@ -27,7 +27,7 @@ const HeroSection = () => {
       </Helmet>
       <div className="relative min-h-screen flex items-center justify-center text-white overflow-hidden">
         <div 
-          className="relative z-10 text-center p-4 sm:p-6 w-full max-w-3xl mx-auto md:mt-0 mt-[-20px]"
+          className="relative z-10 text-center p-4 sm:p-6 w-full max-w-3xl mx-auto md:mt-0 mt-[-100px]"
           style={{ opacity: 0, animation: 'fade-in 0.8s forwards ease-out' }}
         >
           <div className="backdrop-blur-xl bg-white/10 rounded-2xl p-6 md:p-8 shadow-lg border border-white/20">
@@ -44,7 +44,7 @@ const HeroSection = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-md mx-auto">
               <Link
                 to="/explore"
-                className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-2.5 sm:py-3 px-5 sm:px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 text-sm"
+                className="bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white font-semibold py-2.5 sm:py-3 px-5 sm:px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 text-sm"
                 style={{ 
                   transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)' 
                 }}
