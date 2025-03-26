@@ -1,29 +1,17 @@
-
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
-
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled || mobileMenuOpen
-          ? "bg-black/70 backdrop-blur-lg shadow-lg" 
-          : "bg-transparent"
-      }`}
-    >
+  return <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled || mobileMenuOpen ? "bg-black/70 backdrop-blur-lg shadow-lg" : "bg-transparent"}`}>
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           <Link to="/" className="text-white text-2xl font-bold tracking-tight">
@@ -60,29 +48,17 @@ const Header = () => {
           </nav>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-white p-2"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
+          <button className="md:hidden text-white p-2" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
             {mobileMenuOpen ? <X /> : <Menu />}
           </button>
         </div>
 
         {/* Mobile Navigation */}
-        {mobileMenuOpen && (
-          <nav className="md:hidden py-4 space-y-4 text-white bg-black/70 backdrop-blur-md rounded-lg mt-2 p-4">
-            <Link
-              to="/"
-              className="block py-2 hover:text-amber-300 transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
+        {mobileMenuOpen && <nav className="md:hidden py-4 space-y-4 text-white backdrop-blur-md mt-2 p-4 bg-transparent rounded-md">
+            <Link to="/" className="block py-2 hover:text-amber-300 transition-colors" onClick={() => setMobileMenuOpen(false)}>
               Home
             </Link>
-            <Link
-              to="/explore"
-              className="block py-2 hover:text-amber-300 transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
+            <Link to="/explore" className="block py-2 hover:text-amber-300 transition-colors" onClick={() => setMobileMenuOpen(false)}>
               Explore
             </Link>
             <div className="py-2">
@@ -91,41 +67,22 @@ const Header = () => {
                 <ChevronDown className="w-4 h-4" />
               </div>
               <div className="ml-4 mt-2 space-y-2">
-                <Link
-                  to="/packages/spiti"
-                  className="block py-2 hover:text-amber-300 transition-colors"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
+                <Link to="/packages/spiti" className="block py-2 hover:text-amber-300 transition-colors" onClick={() => setMobileMenuOpen(false)}>
                   Spiti Valley
                 </Link>
-                <Link
-                  to="/packages/manali"
-                  className="block py-2 hover:text-amber-300 transition-colors"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
+                <Link to="/packages/manali" className="block py-2 hover:text-amber-300 transition-colors" onClick={() => setMobileMenuOpen(false)}>
                   Manali
                 </Link>
-                <Link
-                  to="/packages/shimla"
-                  className="block py-2 hover:text-amber-300 transition-colors"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
+                <Link to="/packages/shimla" className="block py-2 hover:text-amber-300 transition-colors" onClick={() => setMobileMenuOpen(false)}>
                   Shimla
                 </Link>
               </div>
             </div>
-            <Link
-              to="#lead-form"
-              className="block py-2 hover:text-amber-300 transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
+            <Link to="#lead-form" className="block py-2 hover:text-amber-300 transition-colors" onClick={() => setMobileMenuOpen(false)}>
               Contact
             </Link>
-          </nav>
-        )}
+          </nav>}
       </div>
-    </header>
-  );
+    </header>;
 };
-
 export default Header;
