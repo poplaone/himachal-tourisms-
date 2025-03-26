@@ -1,7 +1,7 @@
-
 import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { Link as RouterLink } from "react-router-dom";
 import BackgroundSlider from "../components/BackgroundSlider";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -54,7 +54,6 @@ const FAQPage = () => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
-  // Scroll to top on page load
   useEffect(() => {
     window.scrollTo(0, 0);
     document.body.style.opacity = "0";
@@ -145,15 +144,21 @@ const FAQPage = () => {
   );
 };
 
-const Link = ({ to, className, children }) => {
+interface CustomLinkProps {
+  to: string;
+  className?: string;
+  children: React.ReactNode;
+}
+
+const Link = ({ to, className, children }: CustomLinkProps) => {
   const handleLinkClick = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
   
   return (
-    <Link to={to} className={className} onClick={handleLinkClick}>
+    <RouterLink to={to} className={className} onClick={handleLinkClick}>
       {children}
-    </Link>
+    </RouterLink>
   );
 };
 
