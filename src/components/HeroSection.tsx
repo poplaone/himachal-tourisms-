@@ -1,4 +1,3 @@
-
 import { ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -10,8 +9,7 @@ const HeroSection = () => {
   return (
     <div className="relative min-h-screen flex items-center justify-center text-white overflow-hidden">
       <div 
-        className="relative z-10 text-center p-4 sm:p-6 w-full max-w-3xl mx-auto md:mt-0 mt-[-100px]"
-        style={{ animation: 'fade-in 0.8s forwards ease-out 0.2s' }}
+        className="relative z-10 text-center p-4 sm:p-6 w-full max-w-3xl mx-auto md:mt-0 mt-[-150px]"
       >
         <div className="backdrop-blur-xl bg-white/15 rounded-2xl p-6 md:p-8 shadow-lg border border-white/20">
           <h1
@@ -48,10 +46,7 @@ const HeroSection = () => {
         </div>
       </div>
       
-      <div 
-        className="absolute bottom-10 z-10 animate-bounce"
-        style={{ animation: 'fade-in 1s forwards ease-out 1s, bounce 2s infinite' }}
-      >
+      <div className="absolute bottom-10 z-10 animate-bounce">
         <ChevronDown className="text-white opacity-70 w-8 h-8" />
       </div>
     </div>
