@@ -47,7 +47,7 @@ const Index = () => {
         
         {/* Add preload link tags for critical resources with high priority */}
         {backgroundImages.map((img, index) => (
-          <link key={index} rel="preload" href={img} as="image" fetchpriority="high" />
+          <link key={index} rel="preload" href={img} as="image" fetchPriority="high" />
         ))}
       </Helmet>
       
