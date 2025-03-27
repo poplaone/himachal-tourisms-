@@ -5,6 +5,7 @@ import BackgroundSlider from "../components/BackgroundSlider";
 import Header from "../components/Header";
 import HeroSection from "../components/HeroSection";
 import ExperiencesSection from "../components/ExperiencesSection";
+import GallerySection from "../components/GallerySection";
 import DiscoverSection from "../components/DiscoverSection";
 import TestimonialsSection from "../components/TestimonialsSection";
 import LeadFormSection from "../components/LeadFormSection";
@@ -58,6 +59,7 @@ const Index = () => {
       <main className="relative pt-16">
         <HeroSection />
         <ExperiencesSection />
+        <GallerySection /> {/* Add the new gallery section right after the packages */}
         <DiscoverSection />
         <TestimonialsSection />
         <LeadFormSection />
