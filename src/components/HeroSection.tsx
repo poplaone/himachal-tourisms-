@@ -1,3 +1,4 @@
+
 import { ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -9,7 +10,7 @@ const HeroSection = () => {
   return (
     <div className="relative min-h-screen flex items-center justify-center text-white overflow-hidden">
       <div 
-        className="relative z-10 text-center p-4 sm:p-6 w-full max-w-3xl mx-auto md:mt-0 mt-[-150px]"
+        className="relative z-10 text-center p-4 sm:p-6 w-full max-w-3xl mx-auto md:mt-0 mt-[-180px]"
       >
         <div className="backdrop-blur-xl bg-white/15 rounded-2xl p-6 md:p-8 shadow-lg border border-white/20">
           <h1

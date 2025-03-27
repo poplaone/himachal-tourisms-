@@ -8,26 +8,40 @@ interface BackgroundSliderProps {
 
 const BackgroundSlider = ({ images, interval = 6000 }: BackgroundSliderProps) => {
   const [current, setCurrent] = useState(0);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
   
   useEffect(() => {
     if (images.length <= 1) return;
     
-    // Preload all images for smoother transitions
-    images.forEach((src) => {
+    // Track loaded images
+    let loadedCount = 0;
+    const imageObjects = images.map(src => {
       const img = new Image();
+      img.onload = () => {
+        loadedCount++;
+        if (loadedCount === images.length) {
+          setImagesLoaded(true);
+        }
+      };
       img.src = src;
-      img.fetchPriority = "high";
+      return img;
     });
     
+    // Start slider only after first image is loaded
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % images.length);
     }, interval);
     
-    return () => clearInterval(timer);
+    return () => {
+      clearInterval(timer);
+      imageObjects.forEach(img => {
+        img.onload = null;
+      });
+    };
   }, [images, interval]);
 
   return (
-    <div className="fixed inset-0 -z-10">
+    <div className="fixed inset-0 -z-10 bg-gray-800">
       {images.map((image, index) => (
         <div
           key={index}

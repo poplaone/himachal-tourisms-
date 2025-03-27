@@ -10,11 +10,12 @@ import TestimonialsSection from "../components/TestimonialsSection";
 import LeadFormSection from "../components/LeadFormSection";
 import Footer from "../components/Footer";
 
-// Add high-resolution images and prioritize loading
+// Use optimized, lower-resolution images for better performance
+// These image URLs now include width parameters that request smaller versions
 const backgroundImages = [
-  "https://images.unsplash.com/photo-1472396961693-142e6e269027?q=80&w=2070&auto=format&fit=crop", // Deer in Himachal forest
-  "https://images.unsplash.com/photo-1506604900144-7360175909e2?q=80&w=2070&auto=format&fit=crop", // Himachal mountains
-  "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?q=80&w=2070&auto=format&fit=crop", // River between mountains
+  "https://images.unsplash.com/photo-1472396961693-142e6e269027?q=75&w=1280&auto=format&fit=crop", // Deer in Himachal forest
+  "https://images.unsplash.com/photo-1506604900144-7360175909e2?q=75&w=1280&auto=format&fit=crop", // Himachal mountains
+  "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?q=75&w=1280&auto=format&fit=crop", // River between mountains
 ];
 
 // Preload the background images
