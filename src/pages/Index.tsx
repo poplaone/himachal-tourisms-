@@ -10,21 +10,37 @@ import TestimonialsSection from "../components/TestimonialsSection";
 import LeadFormSection from "../components/LeadFormSection";
 import Footer from "../components/Footer";
 
+// Add low-resolution placeholder versions for initial quick load
 const backgroundImages = [
   "https://images.unsplash.com/photo-1472396961693-142e6e269027?q=80&w=2070&auto=format&fit=crop", // Deer in Himachal forest
   "https://images.unsplash.com/photo-1506604900144-7360175909e2?q=80&w=2070&auto=format&fit=crop", // Himachal mountains
   "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?q=80&w=2070&auto=format&fit=crop", // River between mountains
 ];
 
+// Preload the background images
+const preloadImages = () => {
+  backgroundImages.forEach(src => {
+    const img = new Image();
+    img.src = src;
+  });
+};
+
 const Index = () => {
+  const [pageLoaded, setPageLoaded] = useState(false);
+
   useEffect(() => {
-    // Fade in the body content
-    document.body.style.opacity = "0";
-    document.body.style.transition = "opacity 0.5s ease-in";
+    // Start preloading images immediately
+    preloadImages();
     
+    // Fade in the body content more rapidly
+    document.body.style.opacity = "0";
+    document.body.style.transition = "opacity 0.3s ease-in";
+    
+    // Set a shorter timeout for initial visibility
     setTimeout(() => {
       document.body.style.opacity = "1";
-    }, 100);
+      setPageLoaded(true);
+    }, 50);
     
     return () => {
       document.body.style.opacity = "";
@@ -43,11 +59,15 @@ const Index = () => {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://himachaltourism.com" />
         <meta property="og:image" content="https://images.unsplash.com/photo-1532452413971-c56d62db18ce?q=80&w=2070&auto=format&fit=crop" />
+        
+        {/* Add preload link tags for critical resources */}
+        <link rel="preload" href={backgroundImages[0]} as="image" />
       </Helmet>
+      
       <BackgroundSlider images={backgroundImages} />
       <Header isHomePage={true} />
       
-      <main className="relative pt-16">
+      <main className={`relative pt-16 ${pageLoaded ? 'animate-fade-in' : ''}`}>
         <HeroSection />
         <ExperiencesSection />
         <DiscoverSection />
