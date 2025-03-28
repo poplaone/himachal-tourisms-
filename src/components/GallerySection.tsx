@@ -130,6 +130,33 @@ const GallerySection = () => {
           </div>
         </div>
       </div>
+      
+      {/* Moved the snowfall animation to regular style tag without jsx prop */}
+      <style>
+        {`
+          @keyframes snowfall {
+            0% {
+              transform: translateY(0) rotate(0deg);
+            }
+            100% {
+              transform: translateY(100vh) rotate(360deg);
+            }
+          }
+          
+          .snowflake {
+            position: fixed;
+            top: -10px;
+            color: white;
+            opacity: 0.7;
+            font-size: 20px;
+            user-select: none;
+            animation-name: snowfall;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            z-index: 1;
+          }
+        `}
+      </style>
     </section>
   );
 };
