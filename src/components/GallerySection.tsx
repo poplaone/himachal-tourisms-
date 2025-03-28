@@ -3,6 +3,7 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Skeleton } from "@/components/ui/skeleton";
+import Snowflakes from "./effects/Snowflakes";
 
 const galleryImages = [
   {
@@ -32,14 +33,10 @@ const galleryImages = [
   }
 ];
 
-// Create snowflake characters array
-const snowflakes = ["❅", "❆", "❄"];
-
 const GallerySection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const [loadedImages, setLoadedImages] = useState<boolean[]>(Array(galleryImages.length).fill(false));
-  const [activeSnowflakes, setActiveSnowflakes] = useState<React.ReactNode[]>([]);
   
   // Handle image load state
   const handleImageLoaded = (index: number) => {
@@ -68,49 +65,6 @@ const GallerySection = () => {
     }
   };
 
-  // Create snowflakes on component mount
-  useEffect(() => {
-    const createSnowflakes = () => {
-      const snowflakeElements = [];
-      const numberOfSnowflakes = 15; // Reduced from 30 to 15 for fewer snowflakes
-      
-      for (let i = 0; i < numberOfSnowflakes; i++) {
-        const randomChar = snowflakes[Math.floor(Math.random() * snowflakes.length)];
-        const animationDuration = 7 + Math.random() * 15; // Slower animation between 7-22s
-        const leftPosition = Math.random() * 100; // Random position
-        const animationDelay = Math.random() * 8; // Increased random delay for more natural look
-        const opacity = 0.3 + Math.random() * 0.4; // Lower opacity between 0.3-0.7
-        
-        snowflakeElements.push(
-          <div 
-            key={i}
-            className="snowflake"
-            style={{
-              left: `${leftPosition}%`,
-              animationDuration: `${animationDuration}s`,
-              animationDelay: `${animationDelay}s`,
-              fontSize: `${Math.random() * 8 + 6}px`, // Smaller size between 6-14px
-              opacity: opacity
-            }}
-          >
-            {randomChar}
-          </div>
-        );
-      }
-      
-      setActiveSnowflakes(snowflakeElements);
-    };
-    
-    createSnowflakes();
-    
-    // Refresh snowflakes periodically
-    const interval = setInterval(() => {
-      createSnowflakes();
-    }, 20000); // Increased interval for less frequent refreshes
-    
-    return () => clearInterval(interval);
-  }, []);
-
   // Navigate with keyboard
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -135,10 +89,8 @@ const GallerySection = () => {
         </svg>
       </div>
       
-      {/* Active snowflakes - moved behind content by using lower z-index */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        {activeSnowflakes}
-      </div>
+      {/* Add the Snowflakes component */}
+      <Snowflakes zIndex={0} />
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
@@ -255,42 +207,6 @@ const GallerySection = () => {
           </div>
         </div>
       </div>
-      
-      {/* Snowfall animation styles */}
-      <style>
-        {`
-          @keyframes snowfall {
-            0% {
-              transform: translateY(-10px) rotate(0deg);
-              opacity: 0;
-            }
-            10% {
-              opacity: 1;
-            }
-            90% {
-              opacity: 0.8;
-            }
-            100% {
-              transform: translateY(100vh) rotate(360deg);
-              opacity: 0;
-            }
-          }
-          
-          .snowflake {
-            position: fixed;
-            top: -10px;
-            color: white;
-            text-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
-            user-select: none;
-            animation-name: snowfall;
-            animation-timing-function: linear;
-            animation-iteration-count: infinite;
-            z-index: 0;
-            pointer-events: none;
-            will-change: transform;
-          }
-        `}
-      </style>
     </section>
   );
 };
