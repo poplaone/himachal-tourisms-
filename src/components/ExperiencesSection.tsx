@@ -15,8 +15,8 @@ const ExperiencesSection = () => {
   };
 
   return (
-    <section className="py-10 md:py-16 text-gray-200">
-      <div className="container mx-auto px-4 lg:px-8">
+    <section className="py-10 md:py-16 text-gray-200 relative">
+      <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
             Himachal Tour Packages

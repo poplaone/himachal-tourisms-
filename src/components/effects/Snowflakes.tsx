@@ -13,7 +13,7 @@ interface SnowflakesProps {
 const Snowflakes = ({
   numberOfFlakes = 15,
   refreshInterval = 20000,
-  zIndex = 0
+  zIndex = -10
 }: SnowflakesProps) => {
   const [activeSnowflakes, setActiveSnowflakes] = useState<React.ReactNode[]>([]);
   

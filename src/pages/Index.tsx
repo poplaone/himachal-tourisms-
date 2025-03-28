@@ -10,6 +10,7 @@ import DiscoverSection from "../components/DiscoverSection";
 import TestimonialsSection from "../components/TestimonialsSection";
 import LeadFormSection from "../components/LeadFormSection";
 import Footer from "../components/Footer";
+import Snowflakes from "../components/effects/Snowflakes";
 
 // Use optimized, lower-resolution images for better performance
 // These image URLs now include width parameters that request smaller versions
@@ -42,7 +43,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen font-sans overflow-x-hidden">
+    <div className="min-h-screen font-sans overflow-x-hidden relative">
       <Helmet>
         <title>Himachal Tourism - Experience the Beauty of Devbhoomi</title>
         <meta name="description" content="Discover the majestic beauty of Himachal Pradesh with our carefully curated tour packages. From snow-capped mountains to ancient temples, explore the land of gods with professional guides and comfortable accommodations." />
@@ -53,10 +54,13 @@ const Index = () => {
         ))}
       </Helmet>
       
+      {/* Snowflakes effect (added with negative z-index to ensure it's behind content) */}
+      <Snowflakes numberOfFlakes={15} zIndex={-10} />
+      
       <BackgroundSlider images={backgroundImages} />
       <Header isHomePage={true} />
       
-      <main className="relative pt-16">
+      <main className="relative pt-16 z-10">
         <HeroSection />
         <ExperiencesSection />
         <GallerySection /> {/* Add the new gallery section right after the packages */}

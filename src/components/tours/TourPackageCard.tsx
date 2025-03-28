@@ -26,7 +26,7 @@ const TourPackageCard = ({
   const [nightsCount, daysCount] = duration.split(/Nights|Days/).filter(Boolean).map(s => s.trim());
   
   return (
-    <div className="backdrop-blur-xl bg-black/25 border border-white/10 rounded-lg overflow-hidden shadow-lg h-full" 
+    <div className="backdrop-blur-xl bg-black/25 border border-white/10 rounded-lg overflow-hidden shadow-lg h-full relative z-10" 
       style={{
         opacity: 0,
         animation: `fade-in 0.7s forwards ease-out ${delay}s`
