@@ -72,13 +72,14 @@ const GallerySection = () => {
   useEffect(() => {
     const createSnowflakes = () => {
       const snowflakeElements = [];
-      const numberOfSnowflakes = 30; // Adjust for desired density
+      const numberOfSnowflakes = 15; // Reduced from 30 to 15 for fewer snowflakes
       
       for (let i = 0; i < numberOfSnowflakes; i++) {
         const randomChar = snowflakes[Math.floor(Math.random() * snowflakes.length)];
-        const animationDuration = 5 + Math.random() * 10; // Between 5-15s
+        const animationDuration = 7 + Math.random() * 15; // Slower animation between 7-22s
         const leftPosition = Math.random() * 100; // Random position
-        const animationDelay = Math.random() * 5; // Random delay
+        const animationDelay = Math.random() * 8; // Increased random delay for more natural look
+        const opacity = 0.3 + Math.random() * 0.4; // Lower opacity between 0.3-0.7
         
         snowflakeElements.push(
           <div 
@@ -88,7 +89,8 @@ const GallerySection = () => {
               left: `${leftPosition}%`,
               animationDuration: `${animationDuration}s`,
               animationDelay: `${animationDelay}s`,
-              fontSize: `${Math.random() * 16 + 10}px`
+              fontSize: `${Math.random() * 8 + 6}px`, // Smaller size between 6-14px
+              opacity: opacity
             }}
           >
             {randomChar}
@@ -104,7 +106,7 @@ const GallerySection = () => {
     // Refresh snowflakes periodically
     const interval = setInterval(() => {
       createSnowflakes();
-    }, 15000);
+    }, 20000); // Increased interval for less frequent refreshes
     
     return () => clearInterval(interval);
   }, []);
@@ -133,8 +135,10 @@ const GallerySection = () => {
         </svg>
       </div>
       
-      {/* Active snowflakes */}
-      {activeSnowflakes}
+      {/* Active snowflakes - moved behind content by using lower z-index */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        {activeSnowflakes}
+      </div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
@@ -257,10 +261,18 @@ const GallerySection = () => {
         {`
           @keyframes snowfall {
             0% {
-              transform: translateY(0) rotate(0deg);
+              transform: translateY(-10px) rotate(0deg);
+              opacity: 0;
+            }
+            10% {
+              opacity: 1;
+            }
+            90% {
+              opacity: 0.8;
             }
             100% {
               transform: translateY(100vh) rotate(360deg);
+              opacity: 0;
             }
           }
           
@@ -268,13 +280,14 @@ const GallerySection = () => {
             position: fixed;
             top: -10px;
             color: white;
-            opacity: 0.7;
-            font-size: 20px;
+            text-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
             user-select: none;
             animation-name: snowfall;
             animation-timing-function: linear;
             animation-iteration-count: infinite;
-            z-index: 1;
+            z-index: 0;
+            pointer-events: none;
+            will-change: transform;
           }
         `}
       </style>
