@@ -1,13 +1,14 @@
-import { ChevronDown, ChevronUp } from "lucide-react";
-import { useRef, useState, useEffect } from "react";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Skeleton } from "@/components/ui/skeleton";
+
+import { useState, useEffect } from "react";
 import Snowflakes from "./effects/Snowflakes";
 import { galleryImages } from "../data/galleryImages";
+import GalleryControls from "./gallery/GalleryControls";
+import GalleryProgressIndicator from "./gallery/GalleryProgressIndicator";
+import ThumbnailNavigation from "./gallery/ThumbnailNavigation";
+import GalleryView from "./gallery/GalleryView";
 
 const GallerySection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const scrollAreaRef = useRef<HTMLDivElement>(null);
   const [loadedImages, setLoadedImages] = useState<boolean[]>(Array(galleryImages.length).fill(false));
   
   // Handle image load state
@@ -20,20 +21,23 @@ const GallerySection = () => {
   const scrollToNext = () => {
     if (currentIndex < galleryImages.length - 1) {
       setCurrentIndex(prev => prev + 1);
-      scrollAreaRef.current?.scrollTo({
-        top: (currentIndex + 1) * 400,
-        behavior: 'smooth'
-      });
     }
   };
   
   const scrollToPrev = () => {
     if (currentIndex > 0) {
       setCurrentIndex(prev => prev - 1);
-      scrollAreaRef.current?.scrollTo({
-        top: (currentIndex - 1) * 400,
-        behavior: 'smooth'
-      });
+    }
+  };
+
+  const handleThumbnailClick = (index: number) => {
+    setCurrentIndex(index);
+  };
+
+  const handleGalleryScroll = (scrollPosition: number) => {
+    const newIndex = Math.round(scrollPosition / 400);
+    if (newIndex !== currentIndex && newIndex >= 0 && newIndex < galleryImages.length) {
+      setCurrentIndex(newIndex);
     }
   };
 
@@ -75,108 +79,43 @@ const GallerySection = () => {
         </div>
         
         <div className="relative max-w-4xl mx-auto">
-          {/* Scroll controls */}
-          <div className="absolute left-1/2 -top-12 -translate-x-1/2 flex flex-col items-center z-10">
-            <button 
-              onClick={scrollToPrev} 
-              disabled={currentIndex === 0}
-              className="p-2 bg-white/50 rounded-full mb-2 hover:bg-white/70 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              aria-label="Scroll up"
-            >
-              <ChevronUp className="h-5 w-5 text-gray-700" />
-            </button>
-            <span className="text-sm font-medium text-gray-700 bg-white/50 px-2 py-1 rounded-full">
-              Swipe vertically
-            </span>
-          </div>
+          {/* Top scroll control */}
+          <GalleryControls 
+            currentIndex={currentIndex}
+            totalImages={galleryImages.length}
+            onPrevClick={scrollToPrev}
+            onNextClick={scrollToNext}
+            isTopControl={true}
+          />
           
           {/* Thumbnail navigation */}
-          <div className="absolute -left-16 top-1/2 -translate-y-1/2 hidden md:flex flex-col space-y-2 z-10">
-            {galleryImages.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => {
-                  setCurrentIndex(idx);
-                  scrollAreaRef.current?.scrollTo({
-                    top: idx * 400,
-                    behavior: 'smooth'
-                  });
-                }}
-                className={`w-10 h-10 rounded-md overflow-hidden border-2 transition-all ${
-                  idx === currentIndex 
-                    ? 'border-blue-500 scale-110' 
-                    : 'border-white/50 opacity-70 hover:opacity-100'
-                }`}
-                aria-label={`View image ${idx + 1}`}
-              >
-                <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: `url(${galleryImages[idx].src})` }} />
-              </button>
-            ))}
-          </div>
+          <ThumbnailNavigation 
+            currentIndex={currentIndex} 
+            onThumbnailClick={handleThumbnailClick} 
+          />
           
-          {/* Vertical gallery */}
-          <div className="h-[400px] rounded-lg overflow-hidden shadow-xl">
-            <ScrollArea 
-              className="h-full" 
-              ref={scrollAreaRef}
-              onScroll={(e) => {
-                const scrollPos = e.currentTarget.scrollTop;
-                const newIndex = Math.round(scrollPos / 400);
-                if (newIndex !== currentIndex && newIndex >= 0 && newIndex < galleryImages.length) {
-                  setCurrentIndex(newIndex);
-                }
-              }}
-            >
-              <div className="flex flex-col space-y-2">
-                {galleryImages.map((image, idx) => (
-                  <div key={idx} className="relative h-[398px] snap-start">
-                    {!loadedImages[idx] && (
-                      <div className="absolute inset-0 flex items-center justify-center bg-blue-50">
-                        <Skeleton className="w-full h-full" />
-                      </div>
-                    )}
-                    <img 
-                      src={image.src} 
-                      alt={image.alt}
-                      className={`w-full h-full object-cover object-center transition-opacity duration-500 ${loadedImages[idx] ? 'opacity-100' : 'opacity-0'}`}
-                      loading={idx <= 1 ? "eager" : "lazy"}
-                      onLoad={() => handleImageLoaded(idx)}
-                    />
-                    <div className="absolute bottom-0 left-0 right-0 p-4 bg-black/40 backdrop-blur-sm">
-                      <p className="text-white font-medium text-lg">{image.caption}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </ScrollArea>
-          </div>
+          {/* Main gallery view */}
+          <GalleryView 
+            currentIndex={currentIndex}
+            loadedImages={loadedImages}
+            onImageLoad={handleImageLoaded}
+            onScroll={handleGalleryScroll}
+          />
           
           {/* Progress indicator */}
-          <div className="absolute -right-10 top-1/2 -translate-y-1/2 hidden md:flex flex-col items-center space-y-1">
-            {galleryImages.map((_, idx) => (
-              <div 
-                key={idx}
-                className={`h-2 w-2 rounded-full transition-all ${
-                  idx === currentIndex ? 'bg-blue-500 w-3 h-3' : 'bg-gray-400'
-                }`}
-              />
-            ))}
-          </div>
+          <GalleryProgressIndicator 
+            currentIndex={currentIndex}
+            totalImages={galleryImages.length}
+          />
           
           {/* Bottom scroll control */}
-          <div className="absolute left-1/2 -bottom-12 -translate-x-1/2 flex flex-col items-center z-10">
-            <button 
-              onClick={scrollToNext} 
-              disabled={currentIndex === galleryImages.length - 1}
-              className="p-2 bg-white/50 rounded-full mt-2 hover:bg-white/70 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              aria-label="Scroll down"
-            >
-              <ChevronDown className="h-5 w-5 text-gray-700" />
-            </button>
-            <span className="text-sm font-medium text-gray-700 bg-white/50 px-2 py-1 rounded-full">
-              {currentIndex + 1} / {galleryImages.length}
-            </span>
-          </div>
+          <GalleryControls 
+            currentIndex={currentIndex}
+            totalImages={galleryImages.length}
+            onPrevClick={scrollToPrev}
+            onNextClick={scrollToNext}
+            isTopControl={false}
+          />
         </div>
       </div>
     </section>
